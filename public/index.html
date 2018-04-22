@@ -6,25 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- build:css ./css/estilo.min.css -->
+    <link rel="stylesheet" href="./static/css/lib/bootstrap.min.css">
     <link rel="stylesheet" href="./static/css/estilo.css">
     <!-- endbuild -->
+    <script src="./static/js/lib/jquery-3.3.1.min.js"></script>
+    <script src="./static/js/lib/angular.min.js"></script>
+    <script src="./static/js/lib/angular-route.min.js"></script>
+    <script src="./static/js/lib/bootstrap.min.js"></script>
     <!-- build:js ./js/index.min.js -->
-    <script src="./static/js/angular.min.js"></script>
-    <script src="./static/js/angular-route.min.js"></script>
-    
-    
-
     <script src="./static/js/main.js"></script>
     <script src="./static/js/controllers/pessoa-controller.js"></script>
     <!-- endbuild -->
-    <title>carteira virtual .:: JSA</title>
+    <title>Carteira virtual .:: JSA</title>
 </head>
 
 <body>
-
-    <ng-view></ng-view>
-
-
+    <div class="container">
+        <ng-view></ng-view>
+    </div>
 </body>
 
 </html>
