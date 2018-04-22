@@ -46,7 +46,7 @@ module.exports = function (grunt) {
         },
         jshint: {
             js: {
-                src : ['public/js/**/*.js']
+                src : ['public/static/js/**/*.js']
             }
         },
         browserSync: {

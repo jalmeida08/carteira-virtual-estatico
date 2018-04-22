@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="carteiraVirtual">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- build:css ./css/estilo.min.css -->
-    <link rel="stylesheet" href="./css/estilo.css">
+    <link rel="stylesheet" href="./static/css/estilo.css">
+    <!-- endbuild -->
+    <!-- build:js ./js/index.min.js -->
+    <script src="./static/js/angular.min.js"></script>
+    <script src="./static/js/angular-route.min.js"></script>
+    
+    
+
+    <script src="./static/js/main.js"></script>
+    <script src="./static/js/controllers/pessoa-controller.js"></script>
     <!-- endbuild -->
     <title>carteira virtual .:: JSA</title>
 </head>
-<body ng-controller="PessoaController">
-    <h1>{{nome}}</h1>
-    <!-- build:js ./js/index.min.js -->
-    <script src="./js/angular.min.js"></script>
-    <script src="./js/main.js"></script>
-    <script src="./js/controllers/pessoa-controller.js"></script>
-    <!-- endbuild --> 
+
+<body>
+
+    <ng-view></ng-view>
+
+
 </body>
+
 </html>
