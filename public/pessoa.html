@@ -1,7 +1,2 @@
-<form ng-submit="salvar()">
-    <div class="form-group">
-        <label for="nome">Nome:</label>
-        <input type="text" class="form-control" name="nome" id="nome" ng-model="nome" placeholder="Digite um nome">
-    </div>
-    <button type="submit" class="btn btn-primary">Salvar</button>
-</form>
+<button ng-click="listarPessoas()">Carregar</button>
+<p ng-repeat="pessoa in pessoas">{{pessoa.idPessoa}} - {{pessoa.nome}}</p>

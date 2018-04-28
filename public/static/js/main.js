@@ -7,5 +7,10 @@ angular.module('carteiraVirtual', ['ngRoute'])
         templateUrl: 'pessoa.html',
         controller: 'PessoaController'
     });
+    $routeProvider.when('/pessoa/cadastro', {
+        templateUrl: 'pessoa-cadastro.html',
+        controller: 'PessoaController'
+    });
+    $routeProvider.otherwise({redirectTo: '/pessoa'});
 
 });
