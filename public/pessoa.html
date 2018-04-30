@@ -1,2 +1,5 @@
 <button ng-click="listarPessoas()">Carregar</button>
-<p ng-repeat="pessoa in pessoas">{{pessoa.idPessoa}} - {{pessoa.nome}}</p>
+<p ng-repeat="pessoa in pessoas">{{pessoa.idPessoa}} - {{pessoa.nome}}
+
+    <button class="btn btn-primary" ng-click="remover(pessoa.idPessoa)">Remover</button>
+</p>

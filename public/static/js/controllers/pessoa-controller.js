@@ -1,17 +1,19 @@
 angular.module('carteiraVirtual')
-    .controller('PessoaController', function ($scope, $http) {
+    .controller('PessoaController', function ($scope, $http, $resource) {
         $scope.pessoa = {};
         $scope.pessoas = [];
         
+        var recursoPessoa = $resource('http://localhost:8080/carteiravirtual/resources/pessoa/:idPessoa');
+        
         $scope.listarPessoas = function () {                
-            
-            $http.get("http://localhost:8080/carteiravirtual/resources/pessoa/pessoas")
-            .then(function success(res){
-                $scope.pessoas = res.data;
-            },function error(res){
-                console.log("error ", res);                    
+
+            recursoPessoa.query(
+                function(response){
+                $scope.pessoas = response;
+            },
+                function(error){
+                console.log("error ", res);                                    
             });
-            console.log("SALVOU -> ", $scope.pessoa);
         };
         
         $scope.salvar = function(){
@@ -26,7 +28,9 @@ angular.module('carteiraVirtual')
                 data: JSON.stringify($scope.pessoa)
                };
 
-            $http(req)
+            $http.post("http://localhost:8080/carteiravirtual/resources/pessoa",
+            JSON.stringify($scope.pessoa),
+            { headers : 'Content-Type : application/json'})
             .then(
                 function success(res){
                     console.log("sucesso ", res);
@@ -35,4 +39,16 @@ angular.module('carteiraVirtual')
                     console.log("erro ", res);
             });
         };
-    });
+
+        $scope.remover = function(idPessoa){
+            console.log(JSON.stringify(idPessoa));            
+            $http.delete("http://localhost:8080/carteiravirtual/resources/pessoa/"+idPessoa)
+        .then(
+            function success(res){
+                console.log("sucesso ", res);
+        }, 
+            function error(res){
+                console.log("erro ", res);
+        });
+        };
+});

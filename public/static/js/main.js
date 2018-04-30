@@ -1,4 +1,4 @@
-angular.module('carteiraVirtual', ['ngRoute'])
+angular.module('carteiraVirtual', ['ngRoute', 'ngResource'])
 .config(function($routeProvider,  $locationProvider) {
 
     $locationProvider.hashPrefix('');
