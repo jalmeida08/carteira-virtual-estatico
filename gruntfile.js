@@ -42,7 +42,7 @@ module.exports = function (grunt) {
         },
         watch: {
             files: ['public/**'],
-            tasks: ['dist']
+            tasks: ['default']
         },
         jshint: {
             js: {

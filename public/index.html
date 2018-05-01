@@ -16,6 +16,7 @@
     <script src="./static/js/lib/angular-resource.js"></script>
     <script src="./static/js/lib/bootstrap.min.js"></script>
     <script src="./static/js/main.js"></script>
+    <script src="./static/js/controllers/servicos.js"></script>
     <script src="./static/js/controllers/pessoa-controller.js"></script>
     <script src="./static/js/controllers/pessoa-service.js"></script>
     <!-- endbuild -->
@@ -23,7 +24,13 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container">        
+        <div ng-if="alerta" class="alert alert-{{alerta.tipo}} alert-dismissible fade show" role="alert">
+            <strong ng-init="timeout()">{{alerta.destaque}}</strong> {{alerta.mensagem}}.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         <ng-view></ng-view>
     </div>
 </body>

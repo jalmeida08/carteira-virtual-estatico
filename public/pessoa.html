@@ -1,5 +1,19 @@
-<button ng-click="listarPessoas()">Carregar</button>
-<p ng-repeat="pessoa in pessoas">{{pessoa.idPessoa}} - {{pessoa.nome}}
+<div ng-init="listarPessoas()">
 
-    <button class="btn btn-primary" ng-click="remover(pessoa.idPessoa)">Remover</button>
-</p>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Nome</th>
+                <th>#</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="pessoa in pessoas">
+                <td>{{pessoa.idPessoa}}</td>
+                <td>{{pessoa.nome}}</td>
+                <td><a class="" href="#" ng-click="remover($event, pessoa.idPessoa)">Apagar</a></td>
+            </tr>
+        </tbody>
+    
+</div>
