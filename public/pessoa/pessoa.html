@@ -5,6 +5,7 @@
             <tr>
                 <th>id</th>
                 <th>Nome</th>
+                <th>Data de Nascimento</th>
                 <th>#</th>
             </tr>
         </thead>
@@ -12,8 +13,11 @@
             <tr ng-repeat="pessoa in pessoas">
                 <td>{{pessoa.idPessoa}}</td>
                 <td>{{pessoa.nome}}</td>
-                <td><a class="" href="#" ng-click="remover($event, pessoa.idPessoa)">Apagar</a></td>
+                <td>{{pessoa.dataNascimento | date:'dd/MM/yyyy'}}</td>
+                <td>
+                    <a class="" href="#" ng-click="remover($event, pessoa)">Apagar</a>
+                </td>
             </tr>
         </tbody>
-    
+    </table>
 </div>

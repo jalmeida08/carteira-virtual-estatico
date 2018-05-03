@@ -67,12 +67,11 @@ module.exports = function (grunt) {
     
     grunt.registerTask('server', ['browserSync', 'watch']);
     grunt.registerTask('dist', ['clean', 'jshint', 'copy']);
-    grunt.registerTask('minifica', ['useminPrepare', 'concat', 'uglify', 'cssmin', 'rev', 'usemin', 'imagemin']);
+    grunt.registerTask('minifica', ['useminPrepare', 'uglify', 'cssmin', 'rev', 'usemin', 'imagemin']);
     grunt.registerTask('default', ['dist', 'minifica', 'server']);
 
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-imagemin');

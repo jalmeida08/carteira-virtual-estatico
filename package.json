@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "angular": "^1.6.10",
+    "angular-animate": "^1.6.10",
     "grunt-contrib-clean": "^1.1.0"
   }
 }
