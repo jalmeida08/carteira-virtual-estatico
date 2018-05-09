@@ -1,11 +1,13 @@
-<form ng-submit="salvar()" method="POST">
-    <div class="form-group">
-        <label for="nome">Nome:</label>
-        <input type="text" class="form-control" name="nome" id="nome" ng-model="pessoa.nome" placeholder="Digite um nome">
-    </div>
-    <div class="form-group">
-        <label for="dataNascimento">Nome:</label>
-        <input type="date" class="form-control" name="dataNascimentonome" id="dataNascimento" ng-model="pessoa.dataNascimento" placeholder="Digite um nome">
-    </div>
-    <button type="submit" class="btn btn-primary">Salvar</button>
-</form>
+<div  data-ng-controller='PessoaController as vm'>
+    <form ng-submit="vm.salvar()" method="POST">
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" class="form-control" name="nome" id="nome" ng-model="vm.pessoa.nome" placeholder="Digite um nome">
+        </div>
+        <div class="form-group">
+            <label for="dataNascimento">Nome:</label>
+            <input type="date" class="form-control" name="dataNascimentonome" id="dataNascimento" ng-model="vm.pessoa.dataNascimento" placeholder="Digite um nome">
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+</div>

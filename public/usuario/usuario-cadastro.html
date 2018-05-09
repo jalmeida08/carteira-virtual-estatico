@@ -2,6 +2,14 @@
     <div class="col-sm">
         <form ng-submit="salvar()">
             <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" class="form-control" name="nome" id="nome" ng-model="pessoa.nome" placeholder="Digite um nome">
+            </div>
+            <div class="form-group">
+                <label for="dataNascimento">Nome:</label>
+                <input type="date" class="form-control" name="dataNascimentonome" id="dataNascimento" ng-model="pessoa.dataNascimento" placeholder="Digite um nome">
+            </div>
+            <div class="form-group">
                 <label for="email">E-mail</label>
                 <input class="form-control" type="text" name="email" id="email" ng-model="usuario.email">
             </div>

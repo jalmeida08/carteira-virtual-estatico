@@ -1,107 +1,34 @@
-angular.module('carteiraVirtual').controller('PessoaController', function ($scope, $timeout, $rootScope, pessoaService) {
-        $scope.pessoa = {};
-        $scope.pessoas = [];
-        
-        
-        
-         $scope.listarPessoas = function () {
-            pessoaService.listar()
-                .then(function(response){
-                    $scope.pessoas = response.data;
-                    console.log(response);
-                }).catch(function(erro){
-                    console.log(erro);
-            });
-        }; 
-
-        $scope.salvar = function () {
-            pessoaService.salvar($scope.pessoa)
-                .then(function(response){
-                    $rootScope.alerta = {
-                        tipo : "success",
-                        destaque : "Sucesso!!!",
-                        mensagem : response.mensagem
-                    };
-                    $scope.pessoa = null;
-                }).catch(function(response){
-                    $rootScope.alerta = {
-                        tipo : "danger",
-                        destaque : "Erro!!! ",
-                        mensagem : "Erro ao salvar"
-                    };
-                });
-        };
-
-         $scope.remover = function (event, pessoa) {
-            event.preventDefault();
-             if(window.confirm("Deseja relamente remover?")){
-                 pessoaService.remover(pessoa.idPessoa)
-                    .then(function(response){
-                        var novaLista = $scope.pessoas.slice(0); 
-                        var indice = novaLista.indexOf(pessoa);
-                        novaLista.splice(indice, 1);
-                        $scope.pessoas = novaLista;
-                        $rootScope.alerta = {
-                            tipo : "success",
-                            destaque : "Sucesso",
-                            mensagem : "Excluido com sucesso"
-                        };                     
-                    }).catch(function(response){
-                        $rootScope.alerta = {
-                            tipo : "danger",
-                            destaque : "Erro",
-                            mensagem : "Erro ao tentar Excluir"
-                        };
-                    });
-             }
-        };
-        $rootScope.timeout = function(){
-            var tempo = 5000;
-            $timeout(function(){
-                $rootScope.alerta = undefined;
-            }, tempo);
-        };
-    });
-
-/* 
-
-
 (function () {
     'use strict';
 
     angular
         .module('carteiraVirtual')
         .controller('PessoaController', PessoaController);
-
-    //  ControllerController.$inject = 
-    function PessoaController($scope, $timeout, $rootScope, pessoaService) {
+        PessoaController.$inject = ['$scope', '$rootScope', '$timeout', 'pessoaService'];
+        function PessoaController($scope, $rootScope, $timeout, pessoaService) {
         var vm = this;
+        vm.pessoa = {};
+        vm.pessoas = [];
 
-
-        $scope.pessoa = {};
-        $scope.pessoas = [];
-
-
-
-        $scope.listarPessoas = function () {
+        vm.listarPessoas = function () {
             pessoaService.listar()
                 .then(function (response) {
-                    $scope.pessoas = response.data;
+                    vm.pessoas = response.data;
                     console.log(response);
                 }).catch(function (erro) {
                     console.log(erro);
                 });
         };
 
-        $scope.salvar = function () {
-            pessoaService.salvar($scope.pessoa)
+        vm.salvar = function () {
+            pessoaService.salvar(vm.pessoa)
                 .then(function (response) {
                     $rootScope.alerta = {
                         tipo: "success",
                         destaque: "Sucesso!!!",
                         mensagem: response.mensagem
                     };
-                    $scope.pessoa = null;
+                    vm.pessoa = null;
                 }).catch(function (response) {
                     $rootScope.alerta = {
                         tipo: "danger",
@@ -111,15 +38,19 @@ angular.module('carteiraVirtual').controller('PessoaController', function ($scop
                 });
         };
 
-        $scope.remover = function (event, pessoa) {
+        $rootScope.$on('salvarPessoaDeUsuario', function (event, pessoa) {
+            console.log("SALANDO PESSOA DA TELA DE USUARIO", pessoa);
+        }); 
+
+        vm.remover = function (event, pessoa) {
             event.preventDefault();
             if (window.confirm("Deseja relamente remover?")) {
                 pessoaService.remover(pessoa.idPessoa)
                     .then(function (response) {
-                        var novaLista = $scope.pessoas.slice(0);
+                        var novaLista = vm.pessoas.slice(0);
                         var indice = novaLista.indexOf(pessoa);
                         novaLista.splice(indice, 1);
-                        $scope.pessoas = novaLista;
+                        vm.pessoas = novaLista;
                         $rootScope.alerta = {
                             tipo: "success",
                             destaque: "Sucesso",
@@ -134,6 +65,7 @@ angular.module('carteiraVirtual').controller('PessoaController', function ($scop
                     });
             }
         };
+
         $rootScope.timeout = function () {
             var tempo = 5000;
             $timeout(function () {
@@ -142,4 +74,3 @@ angular.module('carteiraVirtual').controller('PessoaController', function ($scop
         };
     }
 })();
-*/

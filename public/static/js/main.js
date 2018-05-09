@@ -4,12 +4,10 @@ angular.module('carteiraVirtual', ['ngRoute', 'servicos', 'ngAnimate'])
     $locationProvider.hashPrefix('');
 
     $routeProvider.when('/pessoa', {
-        templateUrl: './pessoa/pessoa.html',
-        controller: 'PessoaController'
+        templateUrl: './pessoa/pessoa.html'
     });
     $routeProvider.when('/pessoa/cadastro', {
-        templateUrl: './pessoa/pessoa-cadastro.html',
-        controller: 'PessoaController'
+        templateUrl: './pessoa/pessoa-cadastro.html'
     });
     $routeProvider.when('/usuario/cadastro', {
         templateUrl: './usuario/usuario-cadastro.html',

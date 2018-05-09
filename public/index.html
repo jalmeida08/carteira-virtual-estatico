@@ -28,15 +28,13 @@
 
 <body>
     <!-- MENU -->
-    <div class="menu" ng-include="'./template/menu.html'">
-        
-    </div>
+    <div class="menu" ng-include="'./template/menu.html'"></div>
     <!-- FIM MENU -->
     <div>
 
     </div>
     <div class="container">
-        <div ng-if="alerta" class="animate-if alert alert-{{alerta.tipo}} alert-dismissible fade show" role="alert">
+        <div ng-if="alerta" class="alert alert-{{alerta.tipo}} alert-dismissible fade show" role="alert">
             <strong ng-init="timeout()">{{alerta.destaque}}</strong> {{alerta.mensagem}}.
         </div>
         <ng-view></ng-view>

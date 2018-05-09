@@ -27,6 +27,21 @@ angular.module('servicos').factory('pessoaService', function (servicos, $q) {
         });
     };
 
+    obj.buscarPessoaNomeDataNascimento = function(pessoa){
+        console.log("PESSOA ENVIADA ", pessoa);
+        return $q(function (resolve, reject) {
+            servicos.save({ tipo: 'pessoa', id: 'buscarNomeDataNascimento' }, pessoa,
+                function (response) {
+                    resolve({
+                        data: response
+                    });
+                }, function (error) {
+                    console.log("saporra deu erro ", error);
+                }
+            );
+        });
+    };
+    
     obj.remover = function (idPessoa) {
         console.log(idPessoa);
         return $q(function (resolve, reject) {
