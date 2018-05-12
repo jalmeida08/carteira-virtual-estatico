@@ -12,6 +12,7 @@
         $scope.usuario = {};
         $scope.usuarios = [];
         $scope.pessoa = {};
+        $scope.tudo = [];
 
         $scope.salvar = function () {
             var pessoa = $scope.pessoa;
@@ -48,5 +49,6 @@
                 console.log(erro);
             });
         };
+        
     }
 })();
