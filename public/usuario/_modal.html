@@ -1,0 +1,56 @@
+<div class="row" ng-init="vm.carregarListaPessoas();">
+    <div class="col-md-6">
+        <form method="POST" ng-submit="vm.salvar();">
+            <div class="form-group">
+                <label for="valor">Valor</label>
+                <input class="form-control" type="text" id="valor" name="valor" ng-model="vm.pagamento.valor">
+            </div>
+            <div class="form-group">
+                <label for="dataPagamento">Data do pagamento</label>
+                <input class="form-control" type="date" id="dataPagamento" name="dataPagamento" ng-model="vm.pagamento.dataPagamento">
+            </div>
+            <div class="form-check" ng-click="vm.invalidarStatusPagamento()">
+                <input type="checkbox" class="form-check-input" name="fixo" id="fixo" ng-model="vm.pagamento.fixo">
+                <label class="form-check-label" for="fixo">Pagamento fixo?</label>
+            </div>
+            <div class="form-group">
+                <label for="statusPagamento">Status do pagamento</label>
+                <select ng-disabled="vm.pagamento.fixo"  id="statusPagamento" name="statusPagamento" ng-model="vm.pagamento.statusPagamento" class="form-control">
+                    <option selected value="">Selecione</option>
+                    <option value="ARECEBER">A receber</option>
+                    <option value="RECEBIDO">Recebido</option>
+                </select>
+            </div>
+            <div class="form-check" ng-click="vm.checarPessoaFisica()">
+                <input type="checkbox" class="form-check-input" name="possuiPessoaFisica" id="possuiPessoaFisica" ng-model="vm.possuiPessoaFisica">
+                <label class="form-check-label" for="possuiPessoaFisica">Possui pessoa física pagadora?</label>
+            </div>
+            <div class="form-group">
+                <label for="pessoaPagadora">Pessoa pagadora</label>
+                <select
+                    class="form-control"
+                    name="pessoaPagadora"
+                    ng-model="vm.pagamento.pessoa"
+                    id="pessoaPagadora"
+                    ng-disabled="vm.possuiPessoaFisica === false ? true : false"
+                    ng-options="pessoa as pessoa.nome for pessoa in vm.pessoas track by pessoa">
+                    <option value="">Selecione</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="descricao">Descrição</label>
+                <textarea
+                    class="form-control"
+                    id="descricao"
+                    placeholder="Ex.: Salário da empresa *****, encontrar ciclano em tal ponto para o pagamento, pagamento proveniente de venda de um veículo..."
+                    ng-model="vm.pagamento.descricao"
+                    ng-change="vm.contarCaracter()"
+                    maxlength="250"
+                    rows="3">
+                </textarea>
+                <span >Caracters restantes <i class="mensagemErro">{{vm.contCaracter}}</i></span>
+            </div>
+            <button class="btn btn-primary" type="submit">Salvar</button>
+        </form>
+    </div>
+</div>

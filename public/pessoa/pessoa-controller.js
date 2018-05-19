@@ -4,17 +4,28 @@
     angular
         .module('carteiraVirtual')
         .controller('PessoaController', PessoaController);
-        PessoaController.$inject = ['$scope', '$rootScope', '$timeout', 'pessoaService'];
-        function PessoaController($scope, $rootScope, $timeout, pessoaService) {
+    PessoaController.$inject = ['$scope', '$rootScope', '$timeout', 'pessoaService', '$location'];
+    function PessoaController($scope, $rootScope, $timeout, pessoaService, $location) {
         var vm = this;
         vm.pessoa = {};
         vm.pessoas = [];
+        checarLogin();
+
+        function checarLogin() {
+            if ($rootScope.usuarioLogado === undefined) {
+                $rootScope.alerta = {
+                    tipo: "warning",
+                    destaque: "Erro!!! ",
+                    mensagem: "Faça login para ter acesso ao sistema"
+                };
+                $location.path("/");
+            };
+        }
 
         vm.listarPessoas = function () {
             pessoaService.listar()
                 .then(function (response) {
                     vm.pessoas = response.data;
-                    console.log(response);
                 }).catch(function (erro) {
                     console.log(erro);
                 });
@@ -37,10 +48,6 @@
                     };
                 });
         };
-
-        $rootScope.$on('salvarPessoaDeUsuario', function (event, pessoa) {
-            console.log("SALANDO PESSOA DA TELA DE USUARIO", pessoa);
-        }); 
 
         vm.remover = function (event, pessoa) {
             event.preventDefault();

@@ -1,0 +1,15 @@
+<div class="row justify-content-md-center" ng-init="vm.usuario.email='jefferson08jsa@hotmail.com'; vm.usuario.senha='123123'">
+    <div class="col-md-4">
+        <form method="POST" ng-submit="vm.login()">
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input class="form-control" type="mail" name="email" id="email" ng-model="vm.usuario.email">
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input class="form-control" type="password"  name="senha" id="senha" ng-model="vm.usuario.senha">
+            </div>
+            <button class="btn btn-primary" type="submit">Logar</button>
+        </form>
+    </div>
+</div>

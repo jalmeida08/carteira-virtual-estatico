@@ -1,4 +1,4 @@
-<div ng-init="listar()">
+<div ng-init="vm.listar()">
    <table class="table table-hover">
         <thead>
             <tr>
@@ -8,10 +8,18 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="usuario in usuarios">
+            <tr ng-repeat="usuario in vm.usuarios">
                 <td>{{usuario.idUsuario}}</td>
                 <td>{{usuario.email}}</td>
-                <td><a href="#">Remover</a></td>
+                <td>
+                    <a href="vm.remover(usuario)">Remover</a>
+                    <a
+                        href="/#/usuario/editar/{{usuario.idUsuario}}"
+                    >
+                        Editar
+                    </a>
+                </td>
+
             </tr>
         </tbody>
    </table>

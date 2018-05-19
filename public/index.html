@@ -11,17 +11,23 @@
     <!-- endbuild -->
     <!-- build:js ./js/index.min.js -->
     <script src="./static/js/lib/jquery-3.3.1.min.js"></script>
+    <script src="./static/js/lib/popper.min.js"></script>
+    
     <script src="./static/js/lib/angular.min.js"></script>
     <script src="./static/js/lib/angular-route.min.js"></script>
     <script src="./static/js/lib/angular-resource.js"></script>
     <script src="./static/js/lib/angular-animate.min.js"></script>
     <script src="./static/js/lib/bootstrap.min.js"></script>
+    <script src="./static/js/lib/ui-bootstrap-tpls-2.5.0.min.js"></script>
+
     <script src="./static/js/main.js"></script>
     <script src="./static/js/servicos.js"></script>
     <script src="./pessoa/pessoa-controller.js"></script>
     <script src="./pessoa/pessoa-service.js"></script>
     <script src="./usuario/usuario-controller.js"></script>
     <script src="./usuario/usuario-service.js"></script>
+    <script src="./pagamento/pagamento-controller.js"></script>
+    <script src="./pagamento/pagamento-service.js"></script>
     <!-- endbuild -->
     <title>Carteira virtual .:: JSA</title>
 </head>
@@ -34,10 +40,10 @@
 
     </div>
     <div class="container">
-        <div ng-if="alerta" class="alert alert-{{alerta.tipo}} alert-dismissible fade show" role="alert">
+        <div ng-if="alerta" class="text-center alert alert-{{alerta.tipo}} alert-dismissible fade show" role="alert">
             <strong ng-init="timeout()">{{alerta.destaque}}</strong> {{alerta.mensagem}}.
         </div>
-        <ng-view></ng-view>
+        <ng-view>Loading...</ng-view>
     </div>
 </body>
 
